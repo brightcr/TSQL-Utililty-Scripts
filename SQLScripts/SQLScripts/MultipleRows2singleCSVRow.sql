@@ -1,5 +1,7 @@
-﻿-- The script retrieves all values for given column into single row
+﻿-- The brightcr licenses this file to you under the MIT license.
+-- See the LICENSE file in the project root for more information.
 
+-- The script retrieves all values for given column into single row
 -------------------------------------------
 -- #1: All column with multiple value is in same table
 -- Create sample data
@@ -26,6 +28,14 @@ ORDER BY ID
 -- Cleanup
 DROP TABLE #temp
 GO
+
+/* Outputs
+ID	CityNames
+1	Washington, Arkansas, Iowa, New Jersey
+2	Springfield, Colorado, Florida
+3	Texas, Ohio
+4	Minnesota
+*/
 
 -------------------------------------------
 -- #2: All column with multiple value is in different table - mostly primary-foreign key relationship
@@ -59,6 +69,14 @@ DROP TABLE #CityDetails
 DROP TABLE #City
 GO
 
+/* Outputs 
+PostalID	CityNames
+1	Washington, Arkansas, Iowa, New Jersey
+2	Springfield, Colorado, Florida
+3	Texas, Ohio
+4	Minnesota
+*/
+
 -------------------------------------------
 -- #3: Convert all the values in the given colum to the single Row of CSV
 -- Create sample data
@@ -84,3 +102,8 @@ ORDER BY ID
 -- Cleanup
 DROP TABLE #temp1
 GO
+
+/* Outputs 
+ID	CityNames
+1	Washington, Arkansas, Iowa, New Jersey, Springfield, Colorado, Florida, Texas, Ohio, Minnesota
+*/
