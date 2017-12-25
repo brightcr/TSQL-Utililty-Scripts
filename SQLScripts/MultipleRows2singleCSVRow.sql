@@ -107,3 +107,32 @@ GO
 ID	CityNames
 1	Washington, Arkansas, Iowa, New Jersey, Springfield, Colorado, Florida, Texas, Ohio, Minnesota
 */
+
+-------------------------------------------
+-- #4: Starting With SQL Server 2017 - STRING_AGG provides native functionality.
+-- It Concatenates the values of string expressions and places separator values between them
+-------------------------------------------
+DROP TABLE IF EXISTS #temp;
+CREATE TABLE #temp (ID INT, [Name] NVARCHAR(1024));
+INSERT INTO #temp (ID, [Name])
+VALUES (1, 'Washington'), (1, 'Arkansas'),  (1, 'Iowa'), (1, 'New Jersey'),
+(2, 'Springfield'), (2, 'Colorado'),  (2, 'Florida'),
+(3, 'Texas'), (3, 'Ohio'),
+(4, 'Minnesota')
+
+-- Actual query
+SELECT ID, STRING_AGG([Name], N', ') AS CityNames
+FROM #temp
+GROUP BY ID
+
+-- Cleanup
+DROP TABLE #temp
+GO
+
+/* outputs 
+ID	CityNames
+1	Washington, Arkansas, Iowa, New Jersey
+2	Springfield, Colorado, Florida
+3	Texas, Ohio
+4	Minnesota
+*/
