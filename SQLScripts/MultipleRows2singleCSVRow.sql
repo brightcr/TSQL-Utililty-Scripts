@@ -78,7 +78,7 @@ PostalID	CityNames
 */
 
 -------------------------------------------
--- #3: Convert all the values in the given colum to the single Row of CSV
+-- #3: Convert all the values in the given column to the single Row of CSV
 -- Create sample data
 -------------------------------------------
 CREATE TABLE #temp1 (ID INT, Name nvarchar(1024));
